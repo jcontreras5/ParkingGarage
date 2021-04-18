@@ -12,25 +12,23 @@ garage class(ticket,space,status):
     def takeTicket(self):
         if self.ticket_space != []:
             ticket = self.ticket_space.pop(0)
+Print(ticket)
+Print(self.ticket_space)
+Print(self.status)
             self.status[ticket]= ""
         if self.ticket_space == []:
             print("unfortunately we do no have any space available")
-    
+
+#method to pay for parking
     def payForParking(self):
         ticket_number = input("Welcome to the payment kiosk, what is your ticket number? ")
         if ticket_number in status:
             self.status[ticket]= "paid"
         if ticket_number not in status:
-            print("Please enter a valid number?")
-
-                
-
-        
-        
-
-    def payForParking(self):
+            print("Please enter a valid number")
 
     def leaveGarage(self):
+
 
 def run():
     Marina_Towers= garage(10,{})
