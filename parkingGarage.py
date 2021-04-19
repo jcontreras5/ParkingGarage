@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@jcontreras5 
-jcontreras5
-/
-ParkingGarage
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-ParkingGarage/parkingGarage.py /
-@jcontreras5
-jcontreras5 Update parkingGarage.py
-Latest commit 1c5613a 7 hours ago
- History
- 1 contributor
-76 lines (65 sloc)  2.61 KB
-  
 from IPython.display import clear_output
 
 class garage():
@@ -51,6 +20,7 @@ class garage():
             print(self.status)
         else:
             print("unfortunately we do no have any space available")
+        
             
         
 
@@ -60,12 +30,12 @@ class garage():
         ticket_number = input("Welcome to the payment kiosk, what is your ticket number? Enter 'b' for back \n")
         if ticket_number.lower() == "b":
             pass
-            clear_output
         elif int(ticket_number) in self.status:
-            self.status[ticket_number]= "paid"
+            self.status[int(ticket_number)] = "paid"
             print("Please proceed to the exit booth, your ticket has been paid.")
         else:
             print("Please enter a valid number")
+        
         
             
     #method to leave garage
@@ -74,17 +44,17 @@ class garage():
         leave = input("Please enter your ticket number. Enter 'b' for back \n")
         if leave.lower() == "b":
             pass
-            clear_output
-        elif leave in self.status:
-            if self.status[leave] == "paid":
-                self.ticket_space.append(leave)
-                sort(self.ticket_space)
-                del self.status[leave]
+        elif int(leave) in self.status:
+            if self.status[int(leave)] == "paid":
+                self.ticket_space.append(int(leave))
+                self.ticket_space.sort()
+                del self.status[int(leave)]
                 print("Thank you for parking at the Marina Towers!")
             else:
                 print("You can't leave unless you have paid, please visit the payment kiosk") 
         elif leave not in self.status :
             print("Please enter a valid number")
+        
         
             
 
@@ -93,7 +63,7 @@ def run():
     Marina_Towers= garage(3,{})
     while True:
         question = (f"Welcome to Marina Towers garage.There are currently {len(Marina_Towers.ticket_space)} spaces.")
-        question += ('\n What would you like to do ?: pay/park/leave/quit \n')
+        question += ('\n What would you like to do ?: park/pay/leave/quit \n')
         ask = input(question)
         if ask.lower() == "park":
             Marina_Towers.takeTicket()
@@ -105,16 +75,3 @@ def run():
             break
 
 run()
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
